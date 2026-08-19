@@ -1,54 +1,44 @@
-/*! tailwindcss v4.3.2 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-orange-100: oklch(95.4% 0.038 75.164);
     --color-orange-300: oklch(83.7% 0.128 66.29);
     --color-orange-400: oklch(75% 0.183 55.934);
     --color-orange-500: oklch(70.5% 0.213 47.604);
-    --color-yellow-300: oklch(90.5% 0.182 98.111);
     --color-yellow-500: oklch(79.5% 0.184 86.047);
     --color-yellow-600: oklch(68.1% 0.162 75.834);
-    --color-yellow-700: oklch(55.4% 0.135 66.442);
-    --color-yellow-800: oklch(47.6% 0.114 61.907);
-    --color-yellow-900: oklch(42.1% 0.095 57.708);
     --color-green-500: oklch(72.3% 0.219 149.579);
-    --color-teal-950: oklch(27.7% 0.046 192.524);
     --color-cyan-300: oklch(86.5% 0.127 207.078);
     --color-cyan-400: oklch(78.9% 0.154 211.53);
+    --color-sky-500: oklch(68.5% 0.169 237.323);
+    --color-sky-700: oklch(50% 0.134 242.749);
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-blue-950: oklch(28.2% 0.091 267.935);
     --color-indigo-50: oklch(96.2% 0.018 272.314);
-    --color-indigo-200: oklch(87% 0.065 274.039);
     --color-indigo-500: oklch(58.5% 0.233 277.117);
     --color-indigo-600: oklch(51.1% 0.262 276.966);
+    --color-indigo-700: oklch(45.7% 0.24 277.023);
     --color-indigo-900: oklch(35.9% 0.144 278.697);
-    --color-indigo-950: oklch(25.7% 0.09 281.288);
-    --color-violet-950: oklch(28.3% 0.141 291.089);
-    --color-slate-500: oklch(55.4% 0.046 257.417);
-    --color-slate-700: oklch(37.2% 0.044 257.287);
     --color-slate-800: oklch(27.9% 0.041 260.031);
-    --color-slate-900: oklch(20.8% 0.042 265.755);
-    --color-slate-950: oklch(12.9% 0.042 264.695);
-    --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-200: oklch(92.8% 0.006 264.531);
     --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
+    --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
-    --container-md: 28rem;
     --container-lg: 32rem;
     --container-xl: 36rem;
-    --container-4xl: 56rem;
     --container-7xl: 80rem;
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
@@ -100,7 +90,7 @@
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
-    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-family: var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
     font-feature-settings: var(--default-font-feature-settings, normal);
     font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
@@ -152,7 +142,7 @@
     border-color: inherit;
     border-collapse: collapse;
   }
-  :-moz-focusring {
+  :-moz-focusring:where(:not(iframe)) {
     outline: auto;
   }
   progress {
@@ -238,8 +228,8 @@
   }
 }
 @layer utilities {
-  .menu {
-    @layer daisyui.l1.l2.l3 {
+  @layer daisyui.l1.l2.l3 {
+    .menu {
       display: flex;
       width: fit-content;
       flex-direction: column;
@@ -248,272 +238,256 @@
       --menu-active-fg: var(--color-neutral-content);
       --menu-active-bg: var(--color-neutral);
       font-size: 0.875rem;
-      :where(li ul, li menu) {
-        position: relative;
-        margin-inline-start: calc(0.25rem * 4);
-        padding-inline-start: calc(0.25rem * 2);
-        white-space: nowrap;
-        &:before {
-          position: absolute;
-          inset-inline-start: calc(0.25rem * 0);
-          top: calc(0.25rem * 3);
-          bottom: calc(0.25rem * 3);
-          background-color: var(--color-base-content);
-          opacity: 10%;
-          width: var(--border);
-          content: "";
-        }
+    }
+    .menu :where(li ul, li menu) {
+      position: relative;
+      margin-inline-start: calc(0.25rem * 4);
+      padding-inline-start: calc(0.25rem * 2);
+      white-space: nowrap;
+      &:before {
+        position: absolute;
+        inset-inline-start: calc(0.25rem * 0);
+        top: calc(0.25rem * 3);
+        bottom: calc(0.25rem * 3);
+        background-color: var(--color-base-content);
+        opacity: 10%;
+        width: var(--border);
+        content: "";
       }
-      :where(li > .menu-dropdown:not(.menu-dropdown-show)) {
+    }
+    .menu :where(li > .menu-dropdown:not(.menu-dropdown-show)) {
+      display: none;
+    }
+    .menu :where(li:not(.menu-title) > *:not(ul, menu, details, .menu-title, .btn)), .menu  :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+      display: grid;
+      grid-auto-flow: column;
+      align-content: flex-start;
+      align-items: center;
+      gap: calc(0.25rem * 2);
+      border-radius: var(--radius-field);
+      padding-inline: calc(0.25rem * 3);
+      padding-block: calc(0.25rem * 1.5);
+      text-align: start;
+      transition-property: color, background-color, box-shadow;
+      transition-duration: 0.2s;
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      grid-auto-columns: minmax(auto, max-content) auto max-content;
+      user-select: none;
+    }
+    .menu :where(li > details > summary) {
+      --tw-outline-style: none;
+      outline-style: none;
+      @media (forced-colors: active) {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+      }
+      &::-webkit-details-marker {
         display: none;
       }
-      :where(li:not(.menu-title) > *:not(ul, menu, details, .menu-title, .btn)), :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
-        display: grid;
-        grid-auto-flow: column;
-        align-content: flex-start;
-        align-items: center;
-        gap: calc(0.25rem * 2);
-        border-radius: var(--radius-field);
-        padding-inline: calc(0.25rem * 3);
-        padding-block: calc(0.25rem * 1.5);
-        text-align: start;
-        transition-property: color, background-color, box-shadow;
+    }
+    :is(.menu :where(li > details > summary), .menu  :where(li > .menu-dropdown-toggle)):after {
+      justify-self: flex-end;
+      display: block;
+      height: 0.375rem;
+      width: 0.375rem;
+      rotate: -135deg;
+      translate: 0 -1px;
+      transition-property: rotate, translate;
+      transition-duration: 0.2s;
+      content: "";
+      transform-origin: 50% 50%;
+      box-shadow: 2px 2px inset;
+      pointer-events: none;
+    }
+    .menu details {
+      overflow: hidden;
+      interpolate-size: allow-keywords;
+    }
+    .menu details::details-content {
+      block-size: 0;
+      @media (prefers-reduced-motion: no-preference) {
+        transition-behavior: allow-discrete;
+        transition-property: block-size, content-visibility;
         transition-duration: 0.2s;
         transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-        grid-auto-columns: minmax(auto, max-content) auto max-content;
-        user-select: none;
       }
-      :where(li > details > summary) {
+    }
+    .menu details[open]::details-content {
+      block-size: auto;
+    }
+    .menu :where(li > details[open] > summary):after, .menu  :where(li > .menu-dropdown-toggle.menu-dropdown-show):after {
+      rotate: 45deg;
+      translate: 0 1px;
+    }
+    .menu :where(li:not(.menu-title, .disabled) > *:not(ul, menu, details, .menu-title), li:not(.menu-title, .disabled) > details > summary:not(.menu-title) ):not(.menu-active, :active, .btn).menu-focus, .menu :where(li:not(.menu-title, .disabled) > *:not(ul, menu, details, .menu-title), li:not(.menu-title, .disabled) > details > summary:not(.menu-title) ):not(.menu-active, :active, .btn):focus-visible {
+      cursor: pointer;
+      background-color: var(--color-base-content);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+      }
+      color: var(--color-base-content);
+      --tw-outline-style: none;
+      outline-style: none;
+      @media (forced-colors: active) {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+      }
+    }
+    .menu :where(li:not(.menu-title, .disabled) > *:not(ul, menu, details, .menu-title):not(.menu-active, :active, .btn):hover, li:not(.menu-title, .disabled) > details > summary:not(.menu-title):not(.menu-active, :active, .btn):hover ) {
+      cursor: pointer;
+      background-color: var(--color-base-content);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+      }
+      --tw-outline-style: none;
+      outline-style: none;
+      @media (forced-colors: active) {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+      }
+      box-shadow: 0 1px oklch(0% 0 0 / 0.01) inset, 0 -1px oklch(100% 0 0 / 0.01) inset;
+    }
+    .menu :where(li:empty) {
+      background-color: var(--color-base-content);
+      opacity: 10%;
+      margin: 0.5rem 1rem;
+      height: 1px;
+    }
+    .menu :where(li) {
+      position: relative;
+      display: flex;
+      flex-shrink: 0;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: stretch;
+      .badge {
+        justify-self: flex-end;
+      }
+      & > *:not(ul, menu, .menu-title, details, .btn):active, & > *:not(ul, menu, .menu-title, details, .btn).menu-active, & > details > summary:active {
         --tw-outline-style: none;
         outline-style: none;
         @media (forced-colors: active) {
           outline: 2px solid transparent;
           outline-offset: 2px;
         }
+        color: var(--menu-active-fg);
+        background-color: var(--menu-active-bg);
+        background-size: auto, calc(var(--noise) * 100%);
+        background-image: none, var(--fx-noise);
+        &:not(&:active) {
+          box-shadow: 0 2px calc(var(--depth) * 3px) -2px var(--menu-active-bg);
+        }
+      }
+      &.menu-disabled, [disabled] {
+        pointer-events: none;
+        color: var(--color-base-content);
+        @supports (color: color-mix(in lab, red, red)) {
+          color: color-mix(in oklab, var(--color-base-content) 20%, transparent);
+        }
+      }
+    }
+    .menu .dropdown:focus-within .menu-dropdown-toggle:after {
+      rotate: 45deg;
+      translate: 0 1px;
+    }
+    .menu .dropdown-content {
+      margin-top: calc(0.25rem * 2);
+      padding: calc(0.25rem * 2);
+      &:before {
+        display: none;
+      }
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      position-area: var(--anchor-v, bottom) var(--anchor-h, span-right);
+    }
+    .dropdown > :not(:has( ~ [class*="dropdown-content"])):focus {
+      --tw-outline-style: none;
+      outline-style: none;
+      @media (forced-colors: active) {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+      }
+    }
+    .dropdown .dropdown-content {
+      position: absolute;
+    }
+    .dropdown.dropdown-close .dropdown-content, .dropdown:not(details, .dropdown-open, .dropdown-hover:hover, :focus-within) .dropdown-content, .dropdown.dropdown-hover:not(:hover) [tabindex]:first-child:focus:not(:focus-visible) ~ .dropdown-content {
+      display: none;
+      transform-origin: top;
+      opacity: 0%;
+      scale: 95%;
+    }
+    .dropdown[popover], .dropdown  .dropdown-content {
+      z-index: 999;
+      @media (prefers-reduced-motion: no-preference) {
+        animation: dropdown 0.2s;
+        transition-property: opacity, scale, display, overlay;
+        transition-behavior: allow-discrete;
+        transition-duration: 0.2s;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+    @starting-style {
+      .dropdown[popover], .dropdown  .dropdown-content {
+        scale: 95%;
+        opacity: 0;
+      }
+    }
+    :is(.dropdown:not(.dropdown-close).dropdown-open, .dropdown:not(.dropdown-close):not(.dropdown-hover):focus, .dropdown:not(.dropdown-close):focus-within)  > [tabindex]:first-child {
+      pointer-events: none;
+    }
+    :is(.dropdown:not(.dropdown-close).dropdown-open, .dropdown:not(.dropdown-close):not(.dropdown-hover):focus, .dropdown:not(.dropdown-close):focus-within) .dropdown-content {
+      opacity: 100%;
+      scale: 100%;
+    }
+    .dropdown:not(.dropdown-close).dropdown-hover:hover .dropdown-content {
+      opacity: 100%;
+      scale: 100%;
+    }
+    .dropdown:is(details) {
+      overflow: revert-layer;
+      summary {
         &::-webkit-details-marker {
           display: none;
         }
       }
-      :where(li > details > summary), :where(li > .menu-dropdown-toggle) {
-        &:after {
-          justify-self: flex-end;
-          display: block;
-          height: 0.375rem;
-          width: 0.375rem;
-          rotate: -135deg;
-          translate: 0 -1px;
-          transition-property: rotate, translate;
-          transition-duration: 0.2s;
-          content: "";
-          transform-origin: 50% 50%;
-          box-shadow: 2px 2px inset;
-          pointer-events: none;
-        }
-      }
-      details {
-        overflow: hidden;
-        interpolate-size: allow-keywords;
-      }
-      details::details-content {
-        block-size: 0;
-        @media (prefers-reduced-motion: no-preference) {
-          transition-behavior: allow-discrete;
-          transition-property: block-size, content-visibility;
-          transition-duration: 0.2s;
-          transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-        }
-      }
-      details[open]::details-content {
-        block-size: auto;
-      }
-      :where(li > details[open] > summary):after, :where(li > .menu-dropdown-toggle.menu-dropdown-show):after {
-        rotate: 45deg;
-        translate: 0 1px;
-      }
-      :where(li:not(.menu-title, .disabled) > *:not(ul, menu, details, .menu-title), li:not(.menu-title, .disabled) > details > summary:not(.menu-title) ):not(.menu-active, :active, .btn) {
-        &.menu-focus, &:focus-visible {
-          cursor: pointer;
-          background-color: var(--color-base-content);
-          @supports (color: color-mix(in lab, red, red)) {
-            background-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
-          }
-          color: var(--color-base-content);
-          --tw-outline-style: none;
-          outline-style: none;
-          @media (forced-colors: active) {
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-          }
-        }
-      }
-      :where(li:not(.menu-title, .disabled) > *:not(ul, menu, details, .menu-title):not(.menu-active, :active, .btn):hover, li:not(.menu-title, .disabled) > details > summary:not(.menu-title):not(.menu-active, :active, .btn):hover ) {
-        cursor: pointer;
-        background-color: var(--color-base-content);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
-        }
-        --tw-outline-style: none;
-        outline-style: none;
-        @media (forced-colors: active) {
-          outline: 2px solid transparent;
-          outline-offset: 2px;
-        }
-        box-shadow: 0 1px oklch(0% 0 0 / 0.01) inset, 0 -1px oklch(100% 0 0 / 0.01) inset;
-      }
-      :where(li:empty) {
-        background-color: var(--color-base-content);
-        opacity: 10%;
-        margin: 0.5rem 1rem;
-        height: 1px;
-      }
-      :where(li) {
-        position: relative;
-        display: flex;
-        flex-shrink: 0;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-items: stretch;
-        .badge {
-          justify-self: flex-end;
-        }
-        & > *:not(ul, menu, .menu-title, details, .btn):active, & > *:not(ul, menu, .menu-title, details, .btn).menu-active, & > details > summary:active {
-          --tw-outline-style: none;
-          outline-style: none;
-          @media (forced-colors: active) {
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-          }
-          color: var(--menu-active-fg);
-          background-color: var(--menu-active-bg);
-          background-size: auto, calc(var(--noise) * 100%);
-          background-image: none, var(--fx-noise);
-          &:not(&:active) {
-            box-shadow: 0 2px calc(var(--depth) * 3px) -2px var(--menu-active-bg);
-          }
-        }
-        &.menu-disabled, [disabled] {
-          pointer-events: none;
-          color: var(--color-base-content);
-          @supports (color: color-mix(in lab, red, red)) {
-            color: color-mix(in oklab, var(--color-base-content) 20%, transparent);
-          }
-        }
-      }
-      .dropdown:focus-within {
-        .menu-dropdown-toggle:after {
-          rotate: 45deg;
-          translate: 0 1px;
-        }
-      }
-      .dropdown-content {
-        margin-top: calc(0.25rem * 2);
-        padding: calc(0.25rem * 2);
-        &:before {
-          display: none;
-        }
-      }
     }
-  }
-  .dropdown {
-    @layer daisyui.l1.l2.l3 {
-      position: relative;
-      display: inline-block;
-      position-area: var(--anchor-v, bottom) var(--anchor-h, span-right);
-      & > *:not(:has( ~ [class*="dropdown-content"])):focus {
-        --tw-outline-style: none;
-        outline-style: none;
-        @media (forced-colors: active) {
-          outline: 2px solid transparent;
-          outline-offset: 2px;
-        }
-      }
-      .dropdown-content {
-        position: absolute;
-      }
-      &.dropdown-close .dropdown-content, &:not(details, .dropdown-open, .dropdown-hover:hover, :focus-within) .dropdown-content, &.dropdown-hover:not(:hover) [tabindex]:first-child:focus:not(:focus-visible) ~ .dropdown-content {
-        display: none;
-        transform-origin: top;
-        opacity: 0%;
-        scale: 95%;
-      }
-      &[popover], .dropdown-content {
-        z-index: 999;
-        @media (prefers-reduced-motion: no-preference) {
-          animation: dropdown 0.2s;
-          transition-property: opacity, scale, display, overlay;
-          transition-behavior: allow-discrete;
-          transition-duration: 0.2s;
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        }
-      }
-      @starting-style {
-        &[popover], .dropdown-content {
-          scale: 95%;
-          opacity: 0;
-        }
-      }
-      &:not(.dropdown-close) {
-        &.dropdown-open, &:not(.dropdown-hover):focus, &:focus-within {
-           > [tabindex]:first-child {
-            pointer-events: none;
-          }
-          .dropdown-content {
-            opacity: 100%;
-            scale: 100%;
-          }
-        }
-        &.dropdown-hover:hover {
-          .dropdown-content {
-            opacity: 100%;
-            scale: 100%;
-          }
-        }
-      }
-      &:is(details) {
-        overflow: revert-layer;
-        summary {
-          &::-webkit-details-marker {
-            display: none;
-          }
-        }
-      }
-      &:where([popover]) {
-        background: #0000;
-      }
-      &[popover] {
-        position: fixed;
-        color: inherit;
-        @supports not (position-area: bottom) {
-          margin: auto;
-          &.dropdown-close, &.dropdown-open:not(:popover-open) {
-            display: none;
-            transform-origin: top;
-            opacity: 0%;
-            scale: 95%;
-          }
-          &::backdrop {
-            background-color: color-mix(in oklab, #000 30%, #0000);
-          }
-        }
-        &.dropdown-close, &:not(.dropdown-open, :popover-open) {
+    .dropdown:where([popover]) {
+      background: #0000;
+    }
+    .dropdown[popover] {
+      position: fixed;
+      color: inherit;
+      @supports not (position-area: bottom) {
+        margin: auto;
+        &.dropdown-close, &.dropdown-open:not(:popover-open) {
           display: none;
           transform-origin: top;
           opacity: 0%;
           scale: 95%;
         }
+        &::backdrop {
+          background-color: color-mix(in oklab, #000 30%, #0000);
+        }
       }
+      &.dropdown-close, &:not(.dropdown-open, :popover-open) {
+        display: none;
+        transform-origin: top;
+        opacity: 0%;
+        scale: 95%;
+      }
+    }
+    :where(.btn) {
+      width: unset;
     }
   }
-  .btn {
-    :where(&) {
-      @layer daisyui.l1.l2.l3 {
-        width: unset;
-      }
-    }
-    .prose :where(a&:not(.btn-link)):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-      text-decoration-line: none;
-    }
-    @layer daisyui.l1.l2.l3 {
+  .prose :where(a.btn:not(.btn-link)):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    text-decoration-line: none;
+  }
+  @layer daisyui.l1.l2.l3 {
+    .btn {
       --size: calc(var(--size-field, 0.25rem) * 10);
       --btn-p: 1rem;
       --btn-fg: var(--color-base-content);
@@ -541,20 +515,28 @@
       transition-duration: 0.2s;
       --btn-bg: var(--btn-color, var(--color-base-200));
       --btn-border: var(--btn-color, var(--color-base-200));
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .btn {
         --btn-border: color-mix(
       in oklab,
       var(--btn-color, var(--color-base-200)),
       #000 calc(var(--depth) * 5%)
     );
       }
+    }
+    .btn {
       --btn-soft-bg: initial;
       --btn-shadow: 0 3px 2px -2px var(--btn-bg),
       0 4px 3px -2px var(--btn-bg);
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .btn {
         --btn-shadow: 0 3px 2px -2px color-mix(in oklab, var(--btn-bg) calc(var(--depth) * 30%), #0000),
       0 4px 3px -2px color-mix(in oklab, var(--btn-bg) calc(var(--depth) * 30%), #0000);
       }
+    }
+    .btn {
       --btn-inset: 0 0.5px 0 0.5px oklch(100% 0 0 / calc(var(--depth) * 6%));
       height: var(--size);
       padding-inline: var(--btn-p);
@@ -569,162 +551,166 @@
       background-size: auto, calc(var(--noise, 0) * 100%);
       text-shadow: 0 0.5px oklch(100% 0 0 / calc(var(--depth) * 0.15));
       box-shadow: var(--btn-inset) inset, var(--btn-shadow);
-      &:is([type="checkbox"], [type="radio"]) {
-        appearance: none;
-        &[aria-label]::after {
-          --tw-content: attr(aria-label);
+    }
+    .btn:is([type="checkbox"], [type="radio"]) {
+      appearance: none;
+      &[aria-label]::after {
+        --tw-content: attr(aria-label);
+        content: var(--tw-content);
+      }
+    }
+  }
+  @layer daisyui.l1.l2 {
+    .btn:where(:checked:not(.filter [type="radio"].btn)) {
+      --btn-color: var(--color-primary);
+      --btn-fg: var(--color-primary-content);
+      isolation: isolate;
+    }
+    @media (hover: hover) {
+      .btn:hover {
+        --btn-bg: var(--btn-hover-bg,
+          var(--btn-color, var(--color-base-200))
+        );
+        @supports (color: color-mix(in lab, red, red)) {
+          --btn-bg: var(--btn-hover-bg,
+          color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 7%)
+        );
+        }
+        color: var(--btn-fg);
+        --btn-border: var(--btn-hover-border,
+          var(--btn-bg)
+        );
+        @supports (color: color-mix(in lab, red, red)) {
+          --btn-border: var(--btn-hover-border,
+          color-mix(in oklab, var(--btn-bg), #000 calc(var(--depth) * 5%))
+        );
+        }
+        --btn-border-style: solid;
+        --btn-inset: var(--btn-hover-inset,
+          0 0.5px 0 0.5px oklch(100% 0 0 / calc(var(--depth) * 6%))
+        );
+        --btn-shadow: var(--btn-hover-shadow,
+          0 3px 2px -2px var(--btn-bg),
+          0 4px 3px -2px var(--btn-bg)
+        );
+        @supports (color: color-mix(in lab, red, red)) {
+          --btn-shadow: var(--btn-hover-shadow,
+          0 3px 2px -2px color-mix(in oklab, var(--btn-bg) calc(var(--depth) * 30%), #0000),
+          0 4px 3px -2px color-mix(in oklab, var(--btn-bg) calc(var(--depth) * 30%), #0000)
+        );
+        }
+      }
+    }
+    .btn:active:not(.btn-active) {
+      translate: 0 var(--btn-active-translate, 0.5px);
+      --btn-bg: var(--btn-active-bg,
+        var(--btn-color, var(--color-base-200))
+      );
+      @supports (color: color-mix(in lab, red, red)) {
+        --btn-bg: var(--btn-active-bg,
+        color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 5%)
+      );
+      }
+      color: var(--btn-fg, var(--color-base-content));
+      --btn-border: var(--btn-active-border,
+        var(--btn-color, var(--color-base-200))
+      );
+      @supports (color: color-mix(in lab, red, red)) {
+        --btn-border: var(--btn-active-border,
+        color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 7%)
+      );
+      }
+      --btn-border-style: solid;
+      --btn-inset: var(--btn-active-inset, 0 0 0 0 oklch(0% 0 0/0));
+      --btn-shadow: var(--btn-active-shadow, 0 0 0 0 oklch(0% 0 0/0));
+    }
+    .btn:where(:checked:not(.filter [type="radio"].btn), :not([type="radio"], [type="checkbox"]):focus-visible ) {
+      --btn-bg: var(--btn-color, var(--color-base-200));
+      color: var(--btn-fg, var(--color-base-content));
+      --btn-border: var(--btn-bg);
+      @supports (color: color-mix(in lab, red, red)) {
+        --btn-border: color-mix(in oklab, var(--btn-bg), #000 calc(var(--depth) * 5%));
+      }
+      --btn-border-style: solid;
+      --btn-inset: 0 0.5px 0 0.5px oklch(100% 0 0 / calc(var(--depth) * 6%));
+      --btn-shadow: 0 3px 2px -2px var(--btn-bg),
+        0 4px 3px -2px var(--btn-bg);
+      @supports (color: color-mix(in lab, red, red)) {
+        --btn-shadow: 0 3px 2px -2px color-mix(in oklab, var(--btn-bg) calc(var(--depth) * 30%), #0000),
+        0 4px 3px -2px color-mix(in oklab, var(--btn-bg) calc(var(--depth) * 30%), #0000);
+      }
+      isolation: isolate;
+    }
+    .btn:focus-visible, .btn:has(:focus-visible) {
+      outline-width: 2px;
+      outline-style: solid;
+      isolation: isolate;
+    }
+  }
+  @layer daisyui {
+    .btn:is(:disabled, [disabled], [aria-disabled="true"]) {
+      pointer-events: none;
+      color: var(--color-base-content);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .btn:is(:disabled, [disabled], [aria-disabled="true"]) {
+        color: color-mix(in oklch, var(--color-base-content) 20%, #0000);
+      }
+    }
+    .btn:is(:disabled, [disabled], [aria-disabled="true"]) {
+      --btn-bg: #0000;
+      --btn-border: #0000;
+      background-image: none;
+      --btn-inset: 0 0 0 0 oklch(0% 0 0/0);
+      --btn-shadow: 0 0 0 0 oklch(0% 0 0/0);
+    }
+    .btn:is(:disabled, [disabled], [aria-disabled="true"]):not(.btn-link, .btn-ghost) {
+      background-color: var(--color-base-content);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+      }
+    }
+  }
+  @layer daisyui.l1.l2.l3 {
+    .filter {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .filter [type="radio"] {
+      width: auto;
+    }
+    .filter input {
+      overflow: hidden;
+      opacity: 100%;
+      scale: 1;
+      transition: visibility 0.1s allow-discrete, margin 0.1s, opacity 0.3s, padding 0.3s, border-width 0.1s;
+      &.filter-reset {
+        aspect-ratio: 1 / 1;
+        &::after {
+          --tw-content: "×";
           content: var(--tw-content);
         }
       }
     }
-    @layer daisyui.l1.l2 {
-      &:where(:checked:not(.filter [type="radio"].btn)) {
-        --btn-color: var(--color-primary);
-        --btn-fg: var(--color-primary-content);
-        isolation: isolate;
-      }
-      @media (hover: hover) {
-        &:hover {
-          --btn-bg: var(--btn-hover-bg,
-          var(--btn-color, var(--color-base-200))
-        );
-          @supports (color: color-mix(in lab, red, red)) {
-            --btn-bg: var(--btn-hover-bg,
-          color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 7%)
-        );
-          }
-          color: var(--btn-fg);
-          --btn-border: var(--btn-hover-border,
-          var(--btn-bg)
-        );
-          @supports (color: color-mix(in lab, red, red)) {
-            --btn-border: var(--btn-hover-border,
-          color-mix(in oklab, var(--btn-bg), #000 calc(var(--depth) * 5%))
-        );
-          }
-          --btn-border-style: solid;
-          --btn-inset: var(--btn-hover-inset,
-          0 0.5px 0 0.5px oklch(100% 0 0 / calc(var(--depth) * 6%))
-        );
-          --btn-shadow: var(--btn-hover-shadow,
-          0 3px 2px -2px var(--btn-bg),
-          0 4px 3px -2px var(--btn-bg)
-        );
-          @supports (color: color-mix(in lab, red, red)) {
-            --btn-shadow: var(--btn-hover-shadow,
-          0 3px 2px -2px color-mix(in oklab, var(--btn-bg) calc(var(--depth) * 30%), #0000),
-          0 4px 3px -2px color-mix(in oklab, var(--btn-bg) calc(var(--depth) * 30%), #0000)
-        );
-          }
-        }
-      }
-      &:active:not(.btn-active) {
-        translate: 0 var(--btn-active-translate, 0.5px);
-        --btn-bg: var(--btn-active-bg,
-        var(--btn-color, var(--color-base-200))
-      );
-        @supports (color: color-mix(in lab, red, red)) {
-          --btn-bg: var(--btn-active-bg,
-        color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 5%)
-      );
-        }
-        color: var(--btn-fg, var(--color-base-content));
-        --btn-border: var(--btn-active-border,
-        var(--btn-color, var(--color-base-200))
-      );
-        @supports (color: color-mix(in lab, red, red)) {
-          --btn-border: var(--btn-active-border,
-        color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 7%)
-      );
-        }
-        --btn-border-style: solid;
-        --btn-inset: var(--btn-active-inset, 0 0 0 0 oklch(0% 0 0/0));
-        --btn-shadow: var(--btn-active-shadow, 0 0 0 0 oklch(0% 0 0/0));
-      }
-      &:where(:checked:not(.filter [type="radio"].btn), :not([type="radio"], [type="checkbox"]):focus-visible ) {
-        --btn-bg: var(--btn-color, var(--color-base-200));
-        color: var(--btn-fg, var(--color-base-content));
-        --btn-border: var(--btn-bg);
-        @supports (color: color-mix(in lab, red, red)) {
-          --btn-border: color-mix(in oklab, var(--btn-bg), #000 calc(var(--depth) * 5%));
-        }
-        --btn-border-style: solid;
-        --btn-inset: 0 0.5px 0 0.5px oklch(100% 0 0 / calc(var(--depth) * 6%));
-        --btn-shadow: 0 3px 2px -2px var(--btn-bg),
-        0 4px 3px -2px var(--btn-bg);
-        @supports (color: color-mix(in lab, red, red)) {
-          --btn-shadow: 0 3px 2px -2px color-mix(in oklab, var(--btn-bg) calc(var(--depth) * 30%), #0000),
-        0 4px 3px -2px color-mix(in oklab, var(--btn-bg) calc(var(--depth) * 30%), #0000);
-        }
-        isolation: isolate;
-      }
-      &:focus-visible, &:has(:focus-visible) {
-        outline-width: 2px;
-        outline-style: solid;
-        isolation: isolate;
-      }
-    }
-    &:is(:disabled, [disabled], [aria-disabled="true"]) {
-      @layer daisyui {
-        pointer-events: none;
-        color: var(--color-base-content);
-        @supports (color: color-mix(in lab, red, red)) {
-          color: color-mix(in oklch, var(--color-base-content) 20%, #0000);
-        }
-        --btn-bg: #0000;
-        --btn-border: #0000;
-        background-image: none;
-        --btn-inset: 0 0 0 0 oklch(0% 0 0/0);
-        --btn-shadow: 0 0 0 0 oklch(0% 0 0/0);
-        &:not(.btn-link, .btn-ghost) {
-          background-color: var(--color-base-content);
-          @supports (color: color-mix(in lab, red, red)) {
-            background-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
-          }
-        }
-      }
+    .filter  > input:not(:last-child), .filter   > :not(:last-child) input {
+      margin-inline-end: 0.25rem;
     }
   }
-  .filter {
-    @layer daisyui.l1.l2.l3 {
-      display: flex;
-      flex-wrap: wrap;
-      [type="radio"] {
-        width: auto;
-      }
-      input {
-        overflow: hidden;
-        opacity: 100%;
-        scale: 1;
-        transition: visibility 0.1s allow-discrete, margin 0.1s, opacity 0.3s, padding 0.3s, border-width 0.1s;
-        &.filter-reset {
-          aspect-ratio: 1 / 1;
-          &::after {
-            --tw-content: "×";
-            content: var(--tw-content);
-          }
-        }
-      }
-       > input:not(:last-child),  > :not(:last-child) input {
-        margin-inline-end: 0.25rem;
-      }
+  @layer daisyui.l1 {
+    .filter:not(:has(:checked:not(.filter-reset))) :is(.filter-reset, [type="reset"]):not(:focus-visible) {
+      visibility: hidden;
     }
-    @layer daisyui.l1 {
-      &:not(:has(:checked:not(.filter-reset))) :is(.filter-reset, [type="reset"]):not(:focus-visible) {
-        visibility: hidden;
-      }
-      &:not(:has(:checked:not(.filter-reset))) :is(.filter-reset, [type="reset"]):not(:focus-visible), &:not(:has(:focus-visible)):has(:checked:not(.filter-reset, [type="checkbox"])) :is(input, button):not(:checked, .filter-reset, [type="reset"]) {
-        margin-inline: 0;
-        width: 0;
-        padding-inline: 0;
-        opacity: 0%;
-        scale: 0;
-        border-width: 0;
-      }
+    .filter:not(:has(:checked:not(.filter-reset))) :is(.filter-reset, [type="reset"]):not(:focus-visible), .filter:not(:has(:focus-visible)):has(:checked:not(.filter-reset, [type="checkbox"])) :is(input, button):not(:checked, .filter-reset, [type="reset"]) {
+      margin-inline: 0;
+      width: 0;
+      padding-inline: 0;
+      opacity: 0%;
+      scale: 0;
+      border-width: 0;
     }
   }
-  .toast {
-    @layer daisyui.l1.l2.l3 {
+  @layer daisyui.l1.l2.l3 {
+    .toast {
       position: fixed;
       inset-inline-start: auto;
       inset-inline-end: calc(0.25rem * 4);
@@ -737,15 +723,13 @@
       translate: var(--toast-x, 0) var(--toast-y, 0);
       width: max-content;
       max-width: calc(100vw - 2rem);
-      & > * {
-        @media (prefers-reduced-motion: no-preference) {
-          animation: toast 0.25s ease-out;
-        }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .toast > * {
+        animation: toast 0.25s ease-out;
       }
     }
-  }
-  .input {
-    @layer daisyui.l1.l2.l3 {
+    .input {
       position: relative;
       display: inline-flex;
       flex-shrink: 1;
@@ -758,9 +742,13 @@
       white-space: nowrap;
       --size: calc(var(--size-field, 0.25rem) * var(--in-size-mul));
       --input-color: var(--color-base-content);
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .input {
         --input-color: color-mix(in oklab, var(--color-base-content) 20%, #0000);
       }
+    }
+    .input {
       cursor: text;
       width: clamp(3rem, 20rem, 100%);
       height: var(--size);
@@ -772,111 +760,115 @@
       border-end-end-radius: var(--join-ee, var(--radius-field));
       border: var(--border) solid var(--input-color, #0000);
       box-shadow: 0 1px var(--input-color) inset, 0 -1px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset;
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .input {
         box-shadow: 0 1px color-mix(in oklab, var(--input-color) calc(var(--depth) * 10%), #0000) inset, 0 -1px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset;
       }
-      input {
-        height: 100%;
-        width: 100%;
-        appearance: none;
-        background-color: transparent;
-        border: none;
-        &::placeholder {
-          color: var(--color-base-content);
-          opacity: 50%;
-        }
-        &:focus, &:focus-within {
-          --tw-outline-style: none;
-          outline-style: none;
-          @media (forced-colors: active) {
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-          }
-        }
-        &::-webkit-calendar-picker-indicator {
-          inset-inline-end: -0.15em;
-        }
-      }
-      &::-webkit-inner-spin-button {
-        margin-inline-end: -10px;
-      }
-      &::-webkit-calendar-picker-indicator {
-        inset-inline-end: 0.75em;
-      }
-      input&, input {
-        position: relative;
-        display: inline-flex;
-        &[type="url"], &[type="email"] {
-          direction: ltr;
-        }
-        &::-webkit-datetime-edit, &::-webkit-date-and-time-value {
-          display: grid;
-          min-height: 100%;
-          align-items: center;
-          text-align: inherit;
-        }
-        &::-webkit-inner-spin-button {
-          margin-block: calc(0.25rem * var(--spin-my));
-        }
-        &::-webkit-calendar-picker-indicator {
-          position: absolute;
-          width: 1em;
-          height: 1em;
-          cursor: pointer;
-        }
-        &::-webkit-color-swatch-wrapper {
-          padding-block: 0.25rem;
-        }
+    }
+    .input input {
+      height: 100%;
+      width: 100%;
+      appearance: none;
+      background-color: transparent;
+      border: none;
+      &::placeholder {
+        color: var(--color-base-content);
+        opacity: 50%;
       }
       &:focus, &:focus-within {
-        --input-color: var(--color-base-content);
-        box-shadow: 0 1px var(--input-color);
-        @supports (color: color-mix(in lab, red, red)) {
-          box-shadow: 0 1px color-mix(in oklab, var(--input-color) calc(var(--depth) * 10%), #0000);
-        }
-        outline: 2px solid var(--input-color);
-        outline-offset: 2px;
-        isolation: isolate;
-      }
-      @media (pointer: coarse) {
-        @supports (-webkit-touch-callout: none) {
-          &:focus, &:focus-within {
-            --font-size: 1rem;
-          }
+        --tw-outline-style: none;
+        outline-style: none;
+        @media (forced-colors: active) {
+          outline: 2px solid transparent;
+          outline-offset: 2px;
         }
       }
-      &:has( > input[disabled]), &:is(:disabled, [disabled]), fieldset:disabled & {
-        cursor: not-allowed;
-        border-color: var(--color-base-200);
-        background-color: var(--color-base-200);
-        &:is(input), :is(input) {
-          color: var(--color-base-content);
-          @supports (color: color-mix(in lab, red, red)) {
-            color: color-mix(in oklab, var(--color-base-content) 40%, transparent);
-          }
-        }
-        box-shadow: none;
-        &::placeholder, ::placeholder {
-          color: var(--color-base-content);
-          opacity: 20%;
-        }
-      }
-      &:has( > input[disabled]) > input[disabled] {
-        cursor: not-allowed;
+      &::-webkit-calendar-picker-indicator {
+        inset-inline-end: -0.15em;
       }
     }
-    @layer daisyui.l1.l2 {
+    .input::-webkit-inner-spin-button {
+      margin-inline-end: -10px;
+    }
+    .input::-webkit-calendar-picker-indicator {
+      inset-inline-end: 0.75em;
+    }
+    input.input, .input  input {
+      position: relative;
+      display: inline-flex;
+      &[type="url"], &[type="email"] {
+        direction: ltr;
+      }
+      &::-webkit-datetime-edit, &::-webkit-date-and-time-value {
+        display: grid;
+        min-height: 100%;
+        align-items: center;
+        text-align: inherit;
+      }
+      &::-webkit-inner-spin-button {
+        margin-block: calc(0.25rem * var(--spin-my));
+      }
+      &::-webkit-calendar-picker-indicator {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        cursor: pointer;
+      }
+      &::-webkit-color-swatch-wrapper {
+        padding-block: 0.25rem;
+      }
+    }
+    .input:focus, .input:focus-within {
+      --input-color: var(--color-base-content);
+      box-shadow: 0 1px var(--input-color);
+      @supports (color: color-mix(in lab, red, red)) {
+        box-shadow: 0 1px color-mix(in oklab, var(--input-color) calc(var(--depth) * 10%), #0000);
+      }
+      outline: 2px solid var(--input-color);
+      outline-offset: 2px;
+      isolation: isolate;
+    }
+    @media (pointer: coarse) {
+      @supports (-webkit-touch-callout: none) {
+        .input:focus, .input:focus-within {
+          --font-size: 1rem;
+        }
+      }
+    }
+    .input:has( > input[disabled]), .input:is(:disabled, [disabled]), fieldset:disabled .input {
+      cursor: not-allowed;
+      border-color: var(--color-base-200);
+      background-color: var(--color-base-200);
+      &:is(input), :is(input) {
+        color: var(--color-base-content);
+        @supports (color: color-mix(in lab, red, red)) {
+          color: color-mix(in oklab, var(--color-base-content) 40%, transparent);
+        }
+      }
+      box-shadow: none;
+      &::placeholder, ::placeholder {
+        color: var(--color-base-content);
+        opacity: 20%;
+      }
+    }
+    .input:has( > input[disabled]) > input[disabled] {
+      cursor: not-allowed;
+    }
+  }
+  @layer daisyui.l1.l2 {
+    .input {
       --in-size-mul: 10;
       --font-size-min: 0.875rem;
       --spin-my: -3;
-      .floating-label:has(&) {
-        --top-mul: 5;
-        --font-size: 0.875rem;
-      }
+    }
+    .floating-label:has(.input) {
+      --top-mul: 5;
+      --font-size: 0.875rem;
     }
   }
-  .table {
-    @layer daisyui.l1.l2.l3 {
+  @layer daisyui.l1.l2.l3 {
+    .table {
       font-size: 0.875rem;
       position: relative;
       width: 100%;
@@ -886,66 +878,60 @@
       border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
       border-radius: var(--radius-box);
       text-align: left;
-      &:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
-        text-align: right;
-      }
-      tr.row-hover {
-        &, &:nth-child(even) {
-          &:hover {
-            @media (hover: hover) {
-              background-color: var(--color-base-200);
-            }
-          }
-        }
-      }
-      :where(th, td) {
-        padding-inline: calc(0.25rem * 4);
-        padding-block: calc(0.25rem * 3);
-        vertical-align: middle;
-      }
-      :where(thead, tfoot) {
-        white-space: nowrap;
-        color: var(--color-base-content);
-        @supports (color: color-mix(in lab, red, red)) {
-          color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
-        }
-        font-size: 0.875rem;
-        font-weight: 600;
-      }
-      :where(tfoot tr:first-child :is(td, th)) {
-        border-top: var(--border) solid var(--color-base-content);
-        @supports (color: color-mix(in lab, red, red)) {
-          border-top: var(--border) solid color-mix(in oklch, var(--color-base-content) 5%, #0000);
-        }
-      }
-      :where(.table-pin-rows thead tr) {
-        position: sticky;
-        top: 0;
-        z-index: 1;
-        background-color: var(--color-base-100);
-      }
-      :where(.table-pin-rows tfoot tr) {
-        position: sticky;
-        bottom: 0;
-        z-index: 1;
-        background-color: var(--color-base-100);
-      }
-      :where(.table-pin-cols tr th) {
-        position: sticky;
-        right: 0;
-        left: 0;
-        background-color: var(--color-base-100);
-      }
-      :where(thead tr :is(td, th), tbody tr:not(:last-child) :is(td, th)) {
-        border-bottom: var(--border) solid var(--color-base-content);
-        @supports (color: color-mix(in lab, red, red)) {
-          border-bottom: var(--border) solid color-mix(in oklch, var(--color-base-content) 5%, #0000);
-        }
+    }
+    .table:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
+      text-align: right;
+    }
+    @media (hover: hover) {
+      :is(:is(.table tr.row-hover), .table tr.row-hover:nth-child(even)):hover {
+        background-color: var(--color-base-200);
       }
     }
-  }
-  .aura {
-    @layer daisyui.l1.l2.l3 {
+    .table :where(th, td) {
+      padding-inline: calc(0.25rem * 4);
+      padding-block: calc(0.25rem * 3);
+      vertical-align: middle;
+    }
+    .table :where(thead, tfoot) {
+      white-space: nowrap;
+      color: var(--color-base-content);
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
+      }
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .table :where(tfoot tr:first-child :is(td, th)) {
+      border-top: var(--border) solid var(--color-base-content);
+      @supports (color: color-mix(in lab, red, red)) {
+        border-top: var(--border) solid color-mix(in oklch, var(--color-base-content) 5%, #0000);
+      }
+    }
+    .table :where(.table-pin-rows thead tr) {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background-color: var(--color-base-100);
+    }
+    .table :where(.table-pin-rows tfoot tr) {
+      position: sticky;
+      bottom: 0;
+      z-index: 1;
+      background-color: var(--color-base-100);
+    }
+    .table :where(.table-pin-cols tr th) {
+      position: sticky;
+      right: 0;
+      left: 0;
+      background-color: var(--color-base-100);
+    }
+    .table :where(thead tr :is(td, th), tbody tr:not(:last-child) :is(td, th)) {
+      border-bottom: var(--border) solid var(--color-base-content);
+      @supports (color: color-mix(in lab, red, red)) {
+        border-bottom: var(--border) solid color-mix(in oklch, var(--color-base-content) 5%, #0000);
+      }
+    }
+    .aura {
       position: relative;
       display: inline-block;
       --aura-padding: 0.125rem;
@@ -953,48 +939,50 @@
       border-radius: calc(var(--aura-padding) + var(--aura-radius, var(--radius-box)));
       animation: aura var(--tw-duration, 6s) linear infinite;
       background-image: conic-gradient(from var(--aura-angle), transparent 225deg, currentColor);
-      &:has( > .card,  > .alert) {
-        --aura-radius: var(--radius-box);
-      }
-      &:has( > .btn,  > .input,  > .select) {
-        --aura-radius: var(--radius-field);
-      }
-      &:has( > .checkbox,  > .toggle,  > .badge) {
-        --aura-radius: var(--radius-selector);
-      }
-      &:before, &:after {
-        animation: inherit;
-        background-color: inherit;
-        background-image: inherit;
-        border-radius: inherit;
-        position: absolute;
-        top: calc(1 / 2 * 100%);
-        left: calc(1 / 2 * 100%);
-        z-index: 0;
-        display: block;
-        opacity: 70%;
-        filter: blur(0.25rem);
-        translate: -50% -50%;
-        width: 100%;
-        height: 100%;
-        content: "";
-      }
-      &:after {
-        opacity: 30%;
-        filter: blur(1rem);
-      }
-      & > * {
-        position: relative;
-        z-index: 1;
-      }
     }
-  }
-  .checkbox {
-    @layer daisyui.l1.l2.l3 {
+    .aura:has( > .card,  > .alert) {
+      --aura-radius: var(--radius-box);
+    }
+    .aura:has( > .btn,  > .input,  > .select) {
+      --aura-radius: var(--radius-field);
+    }
+    .aura:has( > .checkbox,  > .toggle,  > .badge) {
+      --aura-radius: var(--radius-selector);
+    }
+    .aura:before, .aura:after {
+      animation: inherit;
+      background-color: inherit;
+      background-image: inherit;
+      border-radius: inherit;
+      position: absolute;
+      top: calc(1 / 2 * 100%);
+      left: calc(1 / 2 * 100%);
+      z-index: 0;
+      display: block;
+      opacity: 70%;
+      filter: blur(0.25rem);
+      translate: -50% -50%;
+      width: 100%;
+      height: 100%;
+      content: "";
+    }
+    .aura:after {
+      opacity: 30%;
+      filter: blur(1rem);
+    }
+    .aura > * {
+      position: relative;
+      z-index: 1;
+    }
+    .checkbox {
       border: var(--border) solid var(--input-color, var(--color-base-content));
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .checkbox {
         border: var(--border) solid var(--input-color, color-mix(in oklab, var(--color-base-content) 20%, #0000));
       }
+    }
+    .checkbox {
       position: relative;
       display: inline-block;
       flex-shrink: 0;
@@ -1011,72 +999,72 @@
       height: var(--size);
       background-size: auto, calc(var(--noise) * 100%);
       background-image: none, var(--fx-noise);
+    }
+    .checkbox:before {
+      --tw-content: "";
+      content: var(--tw-content);
+      display: block;
+      width: 100%;
+      height: 100%;
+      rotate: 45deg;
+      background-color: currentcolor;
+      opacity: 0%;
+      transition: clip-path 0.3s, opacity 0.1s, rotate 0.3s, translate 0.3s;
+      transition-delay: 0.1s;
+      clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 80%, 70% 80%, 70% 100%);
+      box-shadow: 0px 3px 0 0px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset;
+      font-size: 1rem;
+      line-height: 0.75;
+    }
+    .checkbox:focus-visible {
+      outline: 2px solid var(--input-color, currentColor);
+      outline-offset: 2px;
+    }
+    .checkbox:checked, .checkbox[aria-checked="true"] {
+      background-color: var(--input-color, #0000);
+      box-shadow: 0 0 #0000 inset, 0 8px 0 -4px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset, 0 1px oklch(0% 0 0 / calc(var(--depth) * 0.1));
       &:before {
-        --tw-content: "";
-        content: var(--tw-content);
-        display: block;
-        width: 100%;
-        height: 100%;
-        rotate: 45deg;
-        background-color: currentcolor;
-        opacity: 0%;
-        transition: clip-path 0.3s, opacity 0.1s, rotate 0.3s, translate 0.3s;
-        transition-delay: 0.1s;
-        clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 80%, 70% 80%, 70% 100%);
-        box-shadow: 0px 3px 0 0px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset;
-        font-size: 1rem;
-        line-height: 0.75;
+        clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 0%, 70% 0%, 70% 100%);
+        opacity: 100%;
       }
-      &:focus-visible {
-        outline: 2px solid var(--input-color, currentColor);
-        outline-offset: 2px;
-      }
-      &:checked, &[aria-checked="true"] {
-        background-color: var(--input-color, #0000);
-        box-shadow: 0 0 #0000 inset, 0 8px 0 -4px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset, 0 1px oklch(0% 0 0 / calc(var(--depth) * 0.1));
-        &:before {
-          clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 0%, 70% 0%, 70% 100%);
-          opacity: 100%;
-        }
-        @media (forced-colors: active) {
-          &:before {
-            rotate: 0deg;
-            background-color: transparent;
-            --tw-content: "✔︎";
-            clip-path: none;
-          }
-        }
-        @media print {
-          &:before {
-            rotate: 0deg;
-            background-color: transparent;
-            --tw-content: "✔︎";
-            clip-path: none;
-          }
-        }
-      }
-      &:indeterminate {
-        background-color: var(--input-color, var(--color-base-content) );
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: var(--input-color, color-mix(in oklab, var(--color-base-content) 20%, #0000) );
-        }
+      @media (forced-colors: active) {
         &:before {
           rotate: 0deg;
-          opacity: 100%;
-          translate: 0 -35%;
-          clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 80%, 80% 80%, 80% 100%);
+          background-color: transparent;
+          --tw-content: "✔︎";
+          clip-path: none;
+        }
+      }
+      @media print {
+        &:before {
+          rotate: 0deg;
+          background-color: transparent;
+          --tw-content: "✔︎";
+          clip-path: none;
         }
       }
     }
-    &:disabled {
-      @layer daisyui.l1.l2 {
-        cursor: not-allowed;
-        opacity: 20%;
+    .checkbox:indeterminate {
+      background-color: var(--input-color, var(--color-base-content) );
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: var(--input-color, color-mix(in oklab, var(--color-base-content) 20%, #0000) );
+      }
+      &:before {
+        rotate: 0deg;
+        opacity: 100%;
+        translate: 0 -35%;
+        clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 80%, 80% 80%, 80% 100%);
       }
     }
   }
-  .radio {
-    @layer daisyui.l1.l2.l3 {
+  @layer daisyui.l1.l2 {
+    .checkbox:disabled {
+      cursor: not-allowed;
+      opacity: 20%;
+    }
+  }
+  @layer daisyui.l1.l2.l3 {
+    .radio {
       position: relative;
       display: inline-block;
       flex-shrink: 0;
@@ -1086,103 +1074,109 @@
       padding: 0.25rem;
       vertical-align: middle;
       border: var(--border) solid var(--input-color, currentColor);
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .radio {
         border: var(--border) solid var(--input-color, color-mix(in srgb, currentColor 20%, #0000));
       }
+    }
+    .radio {
       box-shadow: 0 1px oklch(0% 0 0 / calc(var(--depth) * 0.1)) inset;
       --size: calc(var(--size-selector, 0.25rem) * 6);
       width: var(--size);
       height: var(--size);
       color: var(--input-color, currentColor);
-      &:before {
-        display: block;
-        width: 100%;
-        height: 100%;
-        border-radius: calc(infinity * 1px);
-        --tw-content: "";
-        content: var(--tw-content);
-        background-size: auto, calc(var(--noise) * 100%);
-        background-image: none, var(--fx-noise);
-      }
-      &:focus-visible {
-        outline: 2px solid currentColor;
-      }
-      &:checked, &[aria-checked="true"] {
-        border-color: currentcolor;
-        background-color: var(--color-base-100);
-        @media (prefers-reduced-motion: no-preference) {
-          animation: radio 0.2s ease-out;
-        }
-        &:before {
-          background-color: currentcolor;
-          box-shadow: 0 -1px oklch(0% 0 0 / calc(var(--depth) * 0.1)) inset, 0 8px 0 -4px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset, 0 1px oklch(0% 0 0 / calc(var(--depth) * 0.1));
-        }
-        @media (forced-colors: active) {
-          &:before {
-            outline-style: var(--tw-outline-style);
-            outline-width: 1px;
-            outline-offset: calc(1px * -1);
-          }
-        }
-        @media print {
-          &:before {
-            outline: 0.25rem solid;
-            outline-offset: -1rem;
-          }
-        }
-      }
     }
-    &:disabled {
-      @layer daisyui.l1.l2 {
-        cursor: not-allowed;
-        opacity: 20%;
+    .radio:before {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: calc(infinity * 1px);
+      --tw-content: "";
+      content: var(--tw-content);
+      background-size: auto, calc(var(--noise) * 100%);
+      background-image: none, var(--fx-noise);
+    }
+    .radio:focus-visible {
+      outline: 2px solid currentColor;
+    }
+    .radio:checked, .radio[aria-checked="true"] {
+      border-color: currentcolor;
+      background-color: var(--color-base-100);
+      @media (prefers-reduced-motion: no-preference) {
+        animation: radio 0.2s ease-out;
+      }
+      &:before {
+        background-color: currentcolor;
+        box-shadow: 0 -1px oklch(0% 0 0 / calc(var(--depth) * 0.1)) inset, 0 8px 0 -4px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset, 0 1px oklch(0% 0 0 / calc(var(--depth) * 0.1));
+      }
+      @media (forced-colors: active) {
+        &:before {
+          outline-style: var(--tw-outline-style);
+          outline-width: 1px;
+          outline-offset: calc(1px * -1);
+        }
+      }
+      @media print {
+        &:before {
+          outline: 0.25rem solid;
+          outline-offset: -1rem;
+        }
       }
     }
   }
-  .rating {
-    @layer daisyui.l1.l2.l3 {
+  @layer daisyui.l1.l2 {
+    .radio:disabled {
+      cursor: not-allowed;
+      opacity: 20%;
+    }
+  }
+  @layer daisyui.l1.l2.l3 {
+    .rating {
       position: relative;
       display: inline-flex;
       vertical-align: middle;
       --size: var(--size-selector, 0.25rem) * 6;
-      input {
-        cursor: pointer;
-        appearance: none;
-      }
-      * {
-        border-radius: 0;
-        background-color: var(--color-base-content);
-        opacity: 20%;
-        width: calc(var(--size) * 1);
-        height: calc(var(--size));
-        @media (prefers-reduced-motion: no-preference) {
-          animation: rating 0.25s ease-out;
-        }
-      }
-      .rating-hidden {
-        width: calc(0.25rem * 2);
-        background-color: transparent;
-      }
-      :checked, [aria-checked="true"], [aria-current="true"], :has( ~ :checked,  ~ [aria-checked="true"],  ~ [aria-current="true"]) {
-        opacity: 100%;
-      }
-      :focus-visible {
-        scale: 1.1;
-        @media (prefers-reduced-motion: no-preference) {
-          transition: scale 0.2s ease-out;
-        }
-      }
-      :active:focus {
-        animation: none;
-        scale: 1.1;
+    }
+    .rating input {
+      cursor: pointer;
+      appearance: none;
+    }
+    .rating * {
+      border-radius: 0;
+      background-color: var(--color-base-content);
+      opacity: 20%;
+      width: calc(var(--size) * 1);
+      height: calc(var(--size));
+      @media (prefers-reduced-motion: no-preference) {
+        animation: rating 0.25s ease-out;
       }
     }
-    @layer daisyui.l1.l2 {
+    .rating .rating-hidden {
+      width: calc(0.25rem * 2);
+      background-color: transparent;
+    }
+    .rating :checked, .rating  [aria-checked="true"], .rating  [aria-current="true"], .rating  :has( ~ :checked,  ~ [aria-checked="true"],  ~ [aria-current="true"]) {
+      opacity: 100%;
+    }
+    .rating :focus-visible {
+      scale: 1.1;
+      @media (prefers-reduced-motion: no-preference) {
+        transition: scale 0.2s ease-out;
+      }
+    }
+    .rating :active:focus {
+      animation: none;
+      scale: 1.1;
+    }
+  }
+  @layer daisyui.l1.l2 {
+    .rating {
       --size: var(--size-selector, 0.25rem) * 6;
     }
   }
-  .progress {
-    @layer daisyui.l1.l2.l3 {
+  @layer daisyui.l1.l2.l3 {
+    .progress {
       position: relative;
       height: calc(0.25rem * 2);
       width: 100%;
@@ -1190,44 +1184,48 @@
       overflow: hidden;
       border-radius: var(--radius-box);
       background-color: currentcolor;
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .progress {
         background-color: color-mix(in oklab, currentcolor 20%, transparent);
       }
+    }
+    .progress {
       color: var(--color-base-content);
-      &:indeterminate {
-        background-image: repeating-linear-gradient( 90deg, currentColor -1%, currentColor 10%, #0000 10%, #0000 90% );
-        background-size: 200%;
-        background-position-x: 15%;
-        @media (prefers-reduced-motion: no-preference) {
-          animation: progress 5s ease-in-out infinite;
-        }
-        @supports (-moz-appearance: none) {
-          &::-moz-progress-bar {
-            background-color: transparent;
-            @media (prefers-reduced-motion: no-preference) {
-              animation: progress 5s ease-in-out infinite;
-              background-image: repeating-linear-gradient( 90deg, currentColor -1%, currentColor 10%, #0000 10%, #0000 90% );
-              background-size: 200%;
-              background-position-x: 15%;
-            }
-          }
-        }
+    }
+    .progress:indeterminate {
+      background-image: repeating-linear-gradient( 90deg, currentColor -1%, currentColor 10%, #0000 10%, #0000 90% );
+      background-size: 200%;
+      background-position-x: 15%;
+      @media (prefers-reduced-motion: no-preference) {
+        animation: progress 5s ease-in-out infinite;
       }
       @supports (-moz-appearance: none) {
         &::-moz-progress-bar {
-          border-radius: var(--radius-box);
-          background-color: currentcolor;
+          background-color: transparent;
+          @media (prefers-reduced-motion: no-preference) {
+            animation: progress 5s ease-in-out infinite;
+            background-image: repeating-linear-gradient( 90deg, currentColor -1%, currentColor 10%, #0000 10%, #0000 90% );
+            background-size: 200%;
+            background-position-x: 15%;
+          }
         }
       }
-      @supports (-webkit-appearance: none) {
-        &::-webkit-progress-bar {
-          border-radius: var(--radius-box);
-          background-color: transparent;
-        }
-        &::-webkit-progress-value {
-          border-radius: var(--radius-box);
-          background-color: currentColor;
-        }
+    }
+    @supports (-moz-appearance: none) {
+      .progress::-moz-progress-bar {
+        border-radius: var(--radius-box);
+        background-color: currentcolor;
+      }
+    }
+    @supports (-webkit-appearance: none) {
+      .progress::-webkit-progress-bar {
+        border-radius: var(--radius-box);
+        background-color: transparent;
+      }
+      .progress::-webkit-progress-value {
+        border-radius: var(--radius-box);
+        background-color: currentColor;
       }
     }
   }
@@ -1241,7 +1239,7 @@
     position: relative;
   }
   .inset-0 {
-    inset: 0;
+    inset: 0px;
   }
   .-top-3 {
     top: calc(var(--spacing) * -3);
@@ -1255,14 +1253,11 @@
   .-top-10 {
     top: calc(var(--spacing) * -10);
   }
-  .-top-15 {
-    top: calc(var(--spacing) * -15);
-  }
   .-top-20 {
     top: calc(var(--spacing) * -20);
   }
   .top-0 {
-    top: 0;
+    top: 0px;
   }
   .top-1 {
     top: var(--spacing);
@@ -1279,38 +1274,17 @@
   .-right-5 {
     right: calc(var(--spacing) * -5);
   }
-  .right-0 {
-    right: 0;
-  }
   .right-2 {
     right: calc(var(--spacing) * 2);
   }
   .right-5 {
     right: calc(var(--spacing) * 5);
   }
-  .right-10 {
-    right: calc(var(--spacing) * 10);
-  }
-  .right-35 {
-    right: calc(var(--spacing) * 35);
-  }
-  .right-40 {
-    right: calc(var(--spacing) * 40);
-  }
-  .right-45 {
-    right: calc(var(--spacing) * 45);
-  }
-  .right-50 {
-    right: calc(var(--spacing) * 50);
-  }
   .-bottom-5 {
     bottom: calc(var(--spacing) * -5);
   }
-  .-bottom-10 {
-    bottom: calc(var(--spacing) * -10);
-  }
   .bottom-0 {
-    bottom: 0;
+    bottom: 0px;
   }
   .bottom-2 {
     bottom: calc(var(--spacing) * 2);
@@ -1325,7 +1299,7 @@
     left: calc(var(--spacing) * -5);
   }
   .left-0 {
-    left: 0;
+    left: 0px;
   }
   .left-5 {
     left: calc(var(--spacing) * 5);
@@ -1339,11 +1313,17 @@
   .left-35 {
     left: calc(var(--spacing) * 35);
   }
+  .left-36 {
+    left: calc(var(--spacing) * 36);
+  }
+  .left-40 {
+    left: calc(var(--spacing) * 40);
+  }
   .left-\[-25px\] {
     left: -25px;
   }
-  .textarea {
-    @layer daisyui.l1.l2.l3 {
+  @layer daisyui.l1.l2.l3 {
+    .textarea {
       min-height: calc(0.25rem * 20);
       flex-shrink: 1;
       appearance: none;
@@ -1353,75 +1333,83 @@
       padding-block: calc(0.25rem * 2);
       vertical-align: middle;
       --input-color: var(--color-base-content);
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .textarea {
         --input-color: color-mix(in oklab, var(--color-base-content) 20%, #0000);
       }
+    }
+    .textarea {
       width: clamp(3rem, 20rem, 100%);
       font-size: max(var(--font-size, 0rem), var(--font-size-min));
       touch-action: manipulation;
       border: var(--border) solid var(--input-color, #0000);
       box-shadow: 0 1px var(--input-color) inset, 0 -1px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset;
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .textarea {
         box-shadow: 0 1px color-mix(in oklab, var(--input-color) calc(var(--depth) * 10%), #0000) inset, 0 -1px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset;
       }
-      textarea {
-        appearance: none;
-        background-color: transparent;
-        border: none;
-        &::placeholder {
-          color: var(--color-base-content);
-          opacity: 50%;
-        }
-        &:focus, &:focus-within {
-          --tw-outline-style: none;
-          outline-style: none;
-          @media (forced-colors: active) {
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-          }
-        }
+    }
+    .textarea textarea {
+      appearance: none;
+      background-color: transparent;
+      border: none;
+      &::placeholder {
+        color: var(--color-base-content);
+        opacity: 50%;
       }
       &:focus, &:focus-within {
-        --input-color: var(--color-base-content);
-        box-shadow: 0 1px var(--input-color);
-        @supports (color: color-mix(in lab, red, red)) {
-          box-shadow: 0 1px color-mix(in oklab, var(--input-color) calc(var(--depth) * 10%), #0000);
+        --tw-outline-style: none;
+        outline-style: none;
+        @media (forced-colors: active) {
+          outline: 2px solid transparent;
+          outline-offset: 2px;
         }
-        outline: 2px solid var(--input-color);
-        outline-offset: 2px;
-        isolation: isolate;
-      }
-      @media (pointer: coarse) {
-        @supports (-webkit-touch-callout: none) {
-          &:focus, &:focus-within {
-            --font-size: 1rem;
-          }
-        }
-      }
-      &:has( > textarea[disabled]), &:is(:disabled, [disabled]) {
-        cursor: not-allowed;
-        border-color: var(--color-base-200);
-        background-color: var(--color-base-200);
-        color: var(--color-base-content);
-        @supports (color: color-mix(in lab, red, red)) {
-          color: color-mix(in oklab, var(--color-base-content) 40%, transparent);
-        }
-        box-shadow: none;
-        &::placeholder, ::placeholder {
-          color: var(--color-base-content);
-          opacity: 20%;
-        }
-      }
-      &:has( > textarea[disabled]) > textarea[disabled] {
-        cursor: not-allowed;
       }
     }
-    @layer daisyui.l1.l2 {
-      --font-size-min: 0.875rem;
-      .floating-label:has(&) {
-        --top-mul: 5;
-        --font-size: 0.875rem;
+    .textarea:focus, .textarea:focus-within {
+      --input-color: var(--color-base-content);
+      box-shadow: 0 1px var(--input-color);
+      @supports (color: color-mix(in lab, red, red)) {
+        box-shadow: 0 1px color-mix(in oklab, var(--input-color) calc(var(--depth) * 10%), #0000);
       }
+      outline: 2px solid var(--input-color);
+      outline-offset: 2px;
+      isolation: isolate;
+    }
+    @media (pointer: coarse) {
+      @supports (-webkit-touch-callout: none) {
+        .textarea:focus, .textarea:focus-within {
+          --font-size: 1rem;
+        }
+      }
+    }
+    .textarea:has( > textarea[disabled]), .textarea:is(:disabled, [disabled]) {
+      cursor: not-allowed;
+      border-color: var(--color-base-200);
+      background-color: var(--color-base-200);
+      color: var(--color-base-content);
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, var(--color-base-content) 40%, transparent);
+      }
+      box-shadow: none;
+      &::placeholder, ::placeholder {
+        color: var(--color-base-content);
+        opacity: 20%;
+      }
+    }
+    .textarea:has( > textarea[disabled]) > textarea[disabled] {
+      cursor: not-allowed;
+    }
+  }
+  @layer daisyui.l1.l2 {
+    .textarea {
+      --font-size-min: 0.875rem;
+    }
+    .floating-label:has(.textarea) {
+      --top-mul: 5;
+      --font-size: 0.875rem;
     }
   }
   .-z-10 {
@@ -1430,11 +1418,14 @@
   .z-10 {
     z-index: 10;
   }
-  .z-20 {
-    z-index: 20;
-  }
   .z-30 {
     z-index: 30;
+  }
+  .col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+  .row-span-3 {
+    grid-row: span 3 / span 3;
   }
   .container {
     width: 100%;
@@ -1467,7 +1458,7 @@
     margin-block: calc(var(--spacing) * 15);
   }
   .mt-0 {
-    margin-top: 0;
+    margin-top: 0px;
   }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
@@ -1508,16 +1499,14 @@
   .ml-5 {
     margin-left: calc(var(--spacing) * 5);
   }
-  .carousel-item {
-    @layer daisyui.l1.l2.l3 {
+  @layer daisyui.l1.l2.l3 {
+    .carousel-item {
       box-sizing: content-box;
       display: flex;
       flex: none;
       scroll-snap-align: start;
     }
-  }
-  .badge {
-    @layer daisyui.l1.l2.l3 {
+    .badge {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -1537,74 +1526,72 @@
       height: var(--size);
       padding-inline: calc(var(--size) / 2 - var(--border));
     }
-  }
-  .carousel {
-    @layer daisyui.l1.l2.l3 {
+    .carousel {
       display: inline-flex;
       overflow-x: scroll;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
-      @media (prefers-reduced-motion: no-preference) {
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .carousel {
         scroll-behavior: smooth;
       }
-      &::-webkit-scrollbar {
-        display: none;
-      }
+    }
+    .carousel::-webkit-scrollbar {
+      display: none;
     }
   }
-  .prose {
-    :root & {
-      --tw-prose-body: var(--color-base-content);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-prose-body: color-mix(in oklab, var(--color-base-content) 80%, #0000);
-      }
-      --tw-prose-headings: var(--color-base-content);
-      --tw-prose-lead: var(--color-base-content);
-      --tw-prose-links: var(--color-base-content);
-      --tw-prose-bold: var(--color-base-content);
-      --tw-prose-counters: var(--color-base-content);
-      --tw-prose-bullets: var(--color-base-content);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-prose-bullets: color-mix(in oklab, var(--color-base-content) 50%, #0000);
-      }
-      --tw-prose-hr: var(--color-base-content);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-prose-hr: color-mix(in oklab, var(--color-base-content) 20%, #0000);
-      }
-      --tw-prose-quotes: var(--color-base-content);
-      --tw-prose-quote-borders: var(--color-base-content);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-prose-quote-borders: color-mix(in oklab, var(--color-base-content) 20%, #0000);
-      }
-      --tw-prose-captions: var(--color-base-content);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-prose-captions: color-mix(in oklab, var(--color-base-content) 50%, #0000);
-      }
-      --tw-prose-code: var(--color-base-content);
-      --tw-prose-pre-code: var(--color-neutral-content);
-      --tw-prose-pre-bg: var(--color-neutral);
-      --tw-prose-th-borders: var(--color-base-content);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-prose-th-borders: color-mix(in oklab, var(--color-base-content) 50%, #0000);
-      }
-      --tw-prose-td-borders: var(--color-base-content);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-prose-td-borders: color-mix(in oklab, var(--color-base-content) 20%, #0000);
-      }
-      --tw-prose-kbd: var(--color-base-content);
-      @supports (color: color-mix(in lab, red, red)) {
-        --tw-prose-kbd: color-mix(in oklab, var(--color-base-content) 80%, #0000);
-      }
-      :where(code):not(pre > code) {
-        background-color: var(--color-base-200);
-        border-radius: var(--radius-selector);
-        border: var(--border) solid var(--color-base-300);
-        padding-inline: 0.5em;
-        padding-block: 0.2em;
-        font-weight: inherit;
-        &:before, &:after {
-          display: none;
-        }
+  :root .prose {
+    --tw-prose-body: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-prose-body: color-mix(in oklab, var(--color-base-content) 80%, #0000);
+    }
+    --tw-prose-headings: var(--color-base-content);
+    --tw-prose-lead: var(--color-base-content);
+    --tw-prose-links: var(--color-base-content);
+    --tw-prose-bold: var(--color-base-content);
+    --tw-prose-counters: var(--color-base-content);
+    --tw-prose-bullets: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-prose-bullets: color-mix(in oklab, var(--color-base-content) 50%, #0000);
+    }
+    --tw-prose-hr: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-prose-hr: color-mix(in oklab, var(--color-base-content) 20%, #0000);
+    }
+    --tw-prose-quotes: var(--color-base-content);
+    --tw-prose-quote-borders: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-prose-quote-borders: color-mix(in oklab, var(--color-base-content) 20%, #0000);
+    }
+    --tw-prose-captions: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-prose-captions: color-mix(in oklab, var(--color-base-content) 50%, #0000);
+    }
+    --tw-prose-code: var(--color-base-content);
+    --tw-prose-pre-code: var(--color-neutral-content);
+    --tw-prose-pre-bg: var(--color-neutral);
+    --tw-prose-th-borders: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-prose-th-borders: color-mix(in oklab, var(--color-base-content) 50%, #0000);
+    }
+    --tw-prose-td-borders: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-prose-td-borders: color-mix(in oklab, var(--color-base-content) 20%, #0000);
+    }
+    --tw-prose-kbd: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-prose-kbd: color-mix(in oklab, var(--color-base-content) 80%, #0000);
+    }
+    :where(code):not(pre > code) {
+      background-color: var(--color-base-200);
+      border-radius: var(--radius-selector);
+      border: var(--border) solid var(--color-base-300);
+      padding-inline: 0.5em;
+      padding-block: 0.2em;
+      font-weight: inherit;
+      &:before, &:after {
+        display: none;
       }
     }
   }
@@ -1613,6 +1600,9 @@
   }
   .flex {
     display: flex;
+  }
+  .grid {
+    display: grid;
   }
   .hidden {
     display: none;
@@ -1629,8 +1619,8 @@
   .table {
     display: table;
   }
-  .btn-circle {
-    @layer daisyui.l1.l2 {
+  @layer daisyui.l1.l2 {
+    .btn-circle {
       border-radius: calc(infinity * 1px);
       padding-inline: 0;
       width: var(--size);
@@ -1667,17 +1657,11 @@
   .h-16 {
     height: calc(var(--spacing) * 16);
   }
-  .h-20 {
-    height: calc(var(--spacing) * 20);
-  }
   .h-24 {
     height: calc(var(--spacing) * 24);
   }
   .h-28 {
     height: calc(var(--spacing) * 28);
-  }
-  .h-30 {
-    height: calc(var(--spacing) * 30);
   }
   .h-40 {
     height: calc(var(--spacing) * 40);
@@ -1771,32 +1755,38 @@
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
-  .skeleton {
-    @layer daisyui.l1.l2.l3 {
+  @layer daisyui.l1.l2.l3 {
+    .skeleton {
       border-radius: var(--radius-box);
       background-color: var(--color-base-300);
-      @media (prefers-reduced-motion: reduce) {
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .skeleton {
         transition-duration: 15s;
       }
+    }
+    .skeleton {
       will-change: background-position;
       background-image: linear-gradient( 105deg, #0000 0% 40%, var(--color-base-100) 50%, #0000 60% 100% );
       background-size: 200% auto;
       background-position-x: -50%;
-      @media (prefers-reduced-motion: no-preference) {
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .skeleton {
         animation: skeleton 1.8s ease-in-out infinite;
       }
     }
   }
-  .aura-glow {
-    @layer daisyui.l1.l2 {
+  @layer daisyui.l1.l2 {
+    .aura-glow {
       animation: none;
       background-image: radial-gradient(closest-corner at center, currentColor 0%, transparent 90%);
-      &:before {
-        animation: aura-glow var(--tw-duration, 6s) ease-out infinite;
-      }
-      &:after {
-        animation: aura-glow-after var(--tw-duration, 6s) ease-out infinite;
-      }
+    }
+    .aura-glow:before {
+      animation: aura-glow var(--tw-duration, 6s) ease-out infinite;
+    }
+    .aura-glow:after {
+      animation: aura-glow-after var(--tw-duration, 6s) ease-out infinite;
     }
   }
   .cursor-pointer {
@@ -1804,6 +1794,9 @@
   }
   .resize {
     resize: both;
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .flex-col {
     flex-direction: column;
@@ -1832,36 +1825,28 @@
   .gap-14 {
     gap: calc(var(--spacing) * 14);
   }
-  .space-y-1 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(var(--spacing) * var(--tw-space-y-reverse));
-      margin-block-end: calc(var(--spacing) * calc(1 - var(--tw-space-y-reverse)));
-    }
+  :where(.space-y-1 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(var(--spacing) * var(--tw-space-y-reverse));
+    margin-block-end: calc(var(--spacing) * calc(1 - var(--tw-space-y-reverse)));
   }
-  .space-y-2 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
-    }
+  :where(.space-y-2 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
   }
   .gap-x-5 {
     column-gap: calc(var(--spacing) * 5);
   }
-  .space-x-1 {
-    :where(& > :not(:last-child)) {
-      --tw-space-x-reverse: 0;
-      margin-inline-start: calc(var(--spacing) * var(--tw-space-x-reverse));
-      margin-inline-end: calc(var(--spacing) * calc(1 - var(--tw-space-x-reverse)));
-    }
+  :where(.space-x-1 > :not(:last-child)) {
+    --tw-space-x-reverse: 0;
+    margin-inline-start: calc(var(--spacing) * var(--tw-space-x-reverse));
+    margin-inline-end: calc(var(--spacing) * calc(1 - var(--tw-space-x-reverse)));
   }
-  .space-x-3 {
-    :where(& > :not(:last-child)) {
-      --tw-space-x-reverse: 0;
-      margin-inline-start: calc(calc(var(--spacing) * 3) * var(--tw-space-x-reverse));
-      margin-inline-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse)));
-    }
+  :where(.space-x-3 > :not(:last-child)) {
+    --tw-space-x-reverse: 0;
+    margin-inline-start: calc(calc(var(--spacing) * 3) * var(--tw-space-x-reverse));
+    margin-inline-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse)));
   }
   .gap-y-2 {
     row-gap: calc(var(--spacing) * 2);
@@ -1920,6 +1905,9 @@
     border-left-style: var(--tw-border-style);
     border-left-width: 18px;
   }
+  .border-black {
+    border-color: var(--color-black);
+  }
   .border-cyan-400 {
     border-color: var(--color-cyan-400);
   }
@@ -1947,23 +1935,11 @@
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
-  .bg-blue-950 {
-    background-color: var(--color-blue-950);
-  }
   .bg-cyan-300 {
     background-color: var(--color-cyan-300);
   }
-  .bg-gray-500 {
-    background-color: var(--color-gray-500);
-  }
   .bg-indigo-500 {
     background-color: var(--color-indigo-500);
-  }
-  .bg-indigo-900 {
-    background-color: var(--color-indigo-900);
-  }
-  .bg-indigo-950 {
-    background-color: var(--color-indigo-950);
   }
   .bg-orange-100 {
     background-color: var(--color-orange-100);
@@ -1974,47 +1950,14 @@
   .bg-orange-400 {
     background-color: var(--color-orange-400);
   }
-  .bg-slate-500 {
-    background-color: var(--color-slate-500);
-  }
-  .bg-slate-700 {
-    background-color: var(--color-slate-700);
-  }
   .bg-slate-800 {
     background-color: var(--color-slate-800);
-  }
-  .bg-slate-900 {
-    background-color: var(--color-slate-900);
-  }
-  .bg-slate-950 {
-    background-color: var(--color-slate-950);
-  }
-  .bg-teal-950 {
-    background-color: var(--color-teal-950);
-  }
-  .bg-violet-950 {
-    background-color: var(--color-violet-950);
   }
   .bg-white {
     background-color: var(--color-white);
   }
-  .bg-yellow-300 {
-    background-color: var(--color-yellow-300);
-  }
-  .bg-yellow-500 {
-    background-color: var(--color-yellow-500);
-  }
   .bg-yellow-600 {
     background-color: var(--color-yellow-600);
-  }
-  .bg-yellow-700 {
-    background-color: var(--color-yellow-700);
-  }
-  .bg-yellow-800 {
-    background-color: var(--color-yellow-800);
-  }
-  .bg-yellow-900 {
-    background-color: var(--color-yellow-900);
   }
   .fill-current {
     fill: currentcolor;
@@ -2209,10 +2152,8 @@
   .text-yellow-500 {
     color: var(--color-yellow-500);
   }
-  .prose {
-    & :where(a.btn:not(.btn-link)):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-      text-decoration-line: none;
-    }
+  .prose :where(a.btn:not(.btn-link)):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    text-decoration-line: none;
   }
   .underline {
     text-decoration-line: underline;
@@ -2282,594 +2223,392 @@
   .\[clip-path\:ellipse\(150\%_100\%_at_50\%_0\%\)\] {
     clip-path: ellipse(150% 100% at 50% 0%);
   }
-  .group-hover\:rotate-90 {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        rotate: 90deg;
-      }
+  @media (hover: hover) {
+    .group-hover\:rotate-90:is(:where(.group):hover *) {
+      rotate: 90deg;
+    }
+    .group-hover\:border-0:is(:where(.group):hover *) {
+      border-style: var(--tw-border-style);
+      border-width: 0px;
+    }
+    .group-hover\:bg-yellow-500:is(:where(.group):hover *) {
+      background-color: var(--color-yellow-500);
+    }
+    .group-hover\:text-white:is(:where(.group):hover *) {
+      color: var(--color-white);
+    }
+    .hover\:border-0:hover {
+      border-style: var(--tw-border-style);
+      border-width: 0px;
+    }
+    .hover\:bg-gray-200:hover {
+      background-color: var(--color-gray-200);
+    }
+    .hover\:bg-indigo-50:hover {
+      background-color: var(--color-indigo-50);
+    }
+    .hover\:bg-indigo-500:hover {
+      background-color: var(--color-indigo-500);
+    }
+    .hover\:bg-indigo-600:hover {
+      background-color: var(--color-indigo-600);
+    }
+    .hover\:bg-indigo-700:hover {
+      background-color: var(--color-indigo-700);
+    }
+    .hover\:bg-indigo-900:hover {
+      background-color: var(--color-indigo-900);
+    }
+    .hover\:bg-orange-500:hover {
+      background-color: var(--color-orange-500);
+    }
+    .hover\:bg-sky-500:hover {
+      background-color: var(--color-sky-500);
+    }
+    .hover\:bg-sky-700:hover {
+      background-color: var(--color-sky-700);
+    }
+    .hover\:bg-yellow-500:hover {
+      background-color: var(--color-yellow-500);
+    }
+    .hover\:text-indigo-500:hover {
+      color: var(--color-indigo-500);
+    }
+    .hover\:text-orange-500:hover {
+      color: var(--color-orange-500);
+    }
+    .hover\:text-white:hover {
+      color: var(--color-white);
     }
   }
-  .hover\:bg-gray-200 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-200);
-      }
-    }
+  .focus\:outline-none:focus {
+    --tw-outline-style: none;
+    outline-style: none;
   }
-  .hover\:bg-indigo-50 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-indigo-50);
-      }
+  @media (width >= 40rem) {
+    .sm\:m-auto {
+      margin: auto;
     }
-  }
-  .hover\:bg-indigo-500 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-indigo-500);
-      }
+    .sm\:mt-0 {
+      margin-top: 0px;
     }
-  }
-  .hover\:bg-indigo-600 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-indigo-600);
-      }
+    .sm\:flex {
+      display: flex;
     }
-  }
-  .hover\:text-indigo-500 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-indigo-500);
-      }
+    .sm\:grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
     }
-  }
-  .hover\:text-orange-500 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-orange-500);
-      }
+    .sm\:flex-col {
+      flex-direction: column;
     }
-  }
-  .hover\:text-white {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-white);
-      }
-    }
-  }
-  .focus\:outline-none {
-    &:focus {
-      --tw-outline-style: none;
-      outline-style: none;
-    }
-  }
-  .sm\:px-3 {
-    @media (width >= 40rem) {
+    .sm\:px-3 {
       padding-inline: calc(var(--spacing) * 3);
     }
-  }
-  .sm\:px-6 {
-    @media (width >= 40rem) {
+    .sm\:px-6 {
       padding-inline: calc(var(--spacing) * 6);
     }
-  }
-  .sm\:text-4xl {
-    @media (width >= 40rem) {
+    .sm\:text-4xl {
       font-size: var(--text-4xl);
       line-height: var(--tw-leading, var(--text-4xl--line-height));
     }
-  }
-  .sm\:text-lg {
-    @media (width >= 40rem) {
+    .sm\:text-lg {
       font-size: var(--text-lg);
       line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
-  .md\:-top-29 {
-    @media (width >= 48rem) {
+  @media (width >= 48rem) {
+    .md\:-top-29 {
       top: calc(var(--spacing) * -29);
     }
-  }
-  .md\:top-40 {
-    @media (width >= 48rem) {
+    .md\:top-40 {
       top: calc(var(--spacing) * 40);
     }
-  }
-  .md\:top-50 {
-    @media (width >= 48rem) {
+    .md\:top-50 {
       top: calc(var(--spacing) * 50);
     }
-  }
-  .md\:right-20 {
-    @media (width >= 48rem) {
+    .md\:right-20 {
       right: calc(var(--spacing) * 20);
     }
-  }
-  .md\:right-35 {
-    @media (width >= 48rem) {
-      right: calc(var(--spacing) * 35);
-    }
-  }
-  .md\:right-50 {
-    @media (width >= 48rem) {
+    .md\:right-50 {
       right: calc(var(--spacing) * 50);
     }
-  }
-  .md\:right-90 {
-    @media (width >= 48rem) {
+    .md\:right-90 {
       right: calc(var(--spacing) * 90);
     }
-  }
-  .md\:left-15 {
-    @media (width >= 48rem) {
+    .md\:left-15 {
       left: calc(var(--spacing) * 15);
     }
-  }
-  .md\:left-20 {
-    @media (width >= 48rem) {
-      left: calc(var(--spacing) * 20);
-    }
-  }
-  .md\:left-30 {
-    @media (width >= 48rem) {
+    .md\:left-30 {
       left: calc(var(--spacing) * 30);
     }
-  }
-  .md\:left-60 {
-    @media (width >= 48rem) {
+    .md\:left-60 {
       left: calc(var(--spacing) * 60);
     }
-  }
-  .md\:left-70 {
-    @media (width >= 48rem) {
+    .md\:left-70 {
       left: calc(var(--spacing) * 70);
     }
-  }
-  .md\:left-80 {
-    @media (width >= 48rem) {
+    .md\:left-80 {
       left: calc(var(--spacing) * 80);
     }
-  }
-  .md\:m-auto {
-    @media (width >= 48rem) {
+    .md\:m-auto {
       margin: auto;
     }
-  }
-  .md\:my-5 {
-    @media (width >= 48rem) {
+    .md\:my-5 {
       margin-block: calc(var(--spacing) * 5);
     }
-  }
-  .md\:mt-0 {
-    @media (width >= 48rem) {
-      margin-top: 0;
+    .md\:mt-0 {
+      margin-top: 0px;
     }
-  }
-  .md\:mt-10 {
-    @media (width >= 48rem) {
+    .md\:mt-10 {
       margin-top: calc(var(--spacing) * 10);
     }
-  }
-  .md\:mt-20 {
-    @media (width >= 48rem) {
+    .md\:mt-20 {
       margin-top: calc(var(--spacing) * 20);
     }
-  }
-  .md\:ml-10 {
-    @media (width >= 48rem) {
+    .md\:ml-10 {
       margin-left: calc(var(--spacing) * 10);
     }
-  }
-  .md\:flex {
-    @media (width >= 48rem) {
+    .md\:flex {
       display: flex;
     }
-  }
-  .md\:hidden {
-    @media (width >= 48rem) {
+    .md\:hidden {
       display: none;
     }
-  }
-  .md\:h-10 {
-    @media (width >= 48rem) {
+    .md\:h-10 {
       height: calc(var(--spacing) * 10);
     }
-  }
-  .md\:h-20 {
-    @media (width >= 48rem) {
+    .md\:h-20 {
       height: calc(var(--spacing) * 20);
     }
-  }
-  .md\:h-150 {
-    @media (width >= 48rem) {
+    .md\:h-150 {
       height: calc(var(--spacing) * 150);
     }
-  }
-  .md\:h-180 {
-    @media (width >= 48rem) {
+    .md\:h-180 {
       height: calc(var(--spacing) * 180);
     }
-  }
-  .md\:w-10 {
-    @media (width >= 48rem) {
+    .md\:w-10 {
       width: calc(var(--spacing) * 10);
     }
-  }
-  .md\:w-20 {
-    @media (width >= 48rem) {
+    .md\:w-20 {
       width: calc(var(--spacing) * 20);
     }
-  }
-  .md\:w-30 {
-    @media (width >= 48rem) {
+    .md\:w-30 {
       width: calc(var(--spacing) * 30);
     }
-  }
-  .md\:w-50 {
-    @media (width >= 48rem) {
+    .md\:w-50 {
       width: calc(var(--spacing) * 50);
     }
-  }
-  .md\:w-100 {
-    @media (width >= 48rem) {
+    .md\:w-100 {
       width: calc(var(--spacing) * 100);
     }
-  }
-  .md\:w-150 {
-    @media (width >= 48rem) {
+    .md\:w-150 {
       width: calc(var(--spacing) * 150);
     }
-  }
-  .md\:space-y-5 {
-    @media (width >= 48rem) {
-      :where(& > :not(:last-child)) {
-        --tw-space-y-reverse: 0;
-        margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
-        margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
-      }
+    :where(.md\:space-y-5 > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
     }
-  }
-  .md\:object-cover {
-    @media (width >= 48rem) {
+    .md\:object-cover {
       object-fit: cover;
     }
-  }
-  .md\:px-10 {
-    @media (width >= 48rem) {
+    .md\:px-10 {
       padding-inline: calc(var(--spacing) * 10);
     }
-  }
-  .md\:py-2 {
-    @media (width >= 48rem) {
+    .md\:py-2 {
       padding-block: calc(var(--spacing) * 2);
     }
-  }
-  .md\:py-5 {
-    @media (width >= 48rem) {
+    .md\:py-5 {
       padding-block: calc(var(--spacing) * 5);
     }
-  }
-  .md\:text-2xl {
-    @media (width >= 48rem) {
+    .md\:text-2xl {
       font-size: var(--text-2xl);
       line-height: var(--tw-leading, var(--text-2xl--line-height));
     }
-  }
-  .md\:text-3xl {
-    @media (width >= 48rem) {
+    .md\:text-3xl {
       font-size: var(--text-3xl);
       line-height: var(--tw-leading, var(--text-3xl--line-height));
     }
-  }
-  .md\:text-4xl {
-    @media (width >= 48rem) {
+    .md\:text-4xl {
       font-size: var(--text-4xl);
       line-height: var(--tw-leading, var(--text-4xl--line-height));
     }
-  }
-  .md\:text-5xl {
-    @media (width >= 48rem) {
+    .md\:text-5xl {
       font-size: var(--text-5xl);
       line-height: var(--tw-leading, var(--text-5xl--line-height));
     }
-  }
-  .md\:text-xl {
-    @media (width >= 48rem) {
+    .md\:text-xl {
       font-size: var(--text-xl);
       line-height: var(--tw-leading, var(--text-xl--line-height));
     }
   }
-  .lg\:-top-3 {
-    @media (width >= 64rem) {
+  @media (width >= 64rem) {
+    .lg\:-top-3 {
       top: calc(var(--spacing) * -3);
     }
-  }
-  .lg\:-top-10 {
-    @media (width >= 64rem) {
+    .lg\:-top-10 {
       top: calc(var(--spacing) * -10);
     }
-  }
-  .lg\:top-30 {
-    @media (width >= 64rem) {
+    .lg\:top-30 {
       top: calc(var(--spacing) * 30);
     }
-  }
-  .lg\:right-2 {
-    @media (width >= 64rem) {
+    .lg\:right-2 {
       right: calc(var(--spacing) * 2);
     }
-  }
-  .lg\:right-15 {
-    @media (width >= 64rem) {
+    .lg\:right-15 {
       right: calc(var(--spacing) * 15);
     }
-  }
-  .lg\:right-30 {
-    @media (width >= 64rem) {
+    .lg\:right-30 {
       right: calc(var(--spacing) * 30);
     }
-  }
-  .lg\:right-35 {
-    @media (width >= 64rem) {
-      right: calc(var(--spacing) * 35);
-    }
-  }
-  .lg\:-left-4 {
-    @media (width >= 64rem) {
+    .lg\:-left-4 {
       left: calc(var(--spacing) * -4);
     }
-  }
-  .lg\:left-10 {
-    @media (width >= 64rem) {
+    .lg\:left-10 {
       left: calc(var(--spacing) * 10);
     }
-  }
-  .lg\:left-40 {
-    @media (width >= 64rem) {
+    .lg\:left-40 {
       left: calc(var(--spacing) * 40);
     }
-  }
-  .lg\:left-50 {
-    @media (width >= 64rem) {
+    .lg\:left-50 {
       left: calc(var(--spacing) * 50);
     }
-  }
-  .lg\:m-0 {
-    @media (width >= 64rem) {
-      margin: 0;
+    .lg\:m-0 {
+      margin: 0px;
     }
-  }
-  .lg\:my-10 {
-    @media (width >= 64rem) {
+    .lg\:my-10 {
       margin-block: calc(var(--spacing) * 10);
     }
-  }
-  .lg\:mt-0 {
-    @media (width >= 64rem) {
-      margin-top: 0;
+    .lg\:mt-0 {
+      margin-top: 0px;
     }
-  }
-  .lg\:mt-5 {
-    @media (width >= 64rem) {
+    .lg\:mt-5 {
       margin-top: calc(var(--spacing) * 5);
     }
-  }
-  .lg\:mt-10 {
-    @media (width >= 64rem) {
+    .lg\:mt-10 {
       margin-top: calc(var(--spacing) * 10);
     }
-  }
-  .lg\:mt-15 {
-    @media (width >= 64rem) {
+    .lg\:mt-15 {
       margin-top: calc(var(--spacing) * 15);
     }
-  }
-  .lg\:mt-20 {
-    @media (width >= 64rem) {
+    .lg\:mt-20 {
       margin-top: calc(var(--spacing) * 20);
     }
-  }
-  .lg\:mt-30 {
-    @media (width >= 64rem) {
+    .lg\:mt-30 {
       margin-top: calc(var(--spacing) * 30);
     }
-  }
-  .lg\:ml-0 {
-    @media (width >= 64rem) {
-      margin-left: 0;
+    .lg\:ml-0 {
+      margin-left: 0px;
     }
-  }
-  .lg\:ml-5 {
-    @media (width >= 64rem) {
+    .lg\:ml-5 {
       margin-left: calc(var(--spacing) * 5);
     }
-  }
-  .lg\:ml-15 {
-    @media (width >= 64rem) {
+    .lg\:ml-15 {
       margin-left: calc(var(--spacing) * 15);
     }
-  }
-  .lg\:h-7 {
-    @media (width >= 64rem) {
+    .lg\:h-7 {
       height: calc(var(--spacing) * 7);
     }
-  }
-  .lg\:h-100 {
-    @media (width >= 64rem) {
+    .lg\:h-100 {
       height: calc(var(--spacing) * 100);
     }
-  }
-  .lg\:h-130 {
-    @media (width >= 64rem) {
+    .lg\:h-130 {
       height: calc(var(--spacing) * 130);
     }
-  }
-  .lg\:h-150 {
-    @media (width >= 64rem) {
+    .lg\:h-150 {
       height: calc(var(--spacing) * 150);
     }
-  }
-  .lg\:h-170 {
-    @media (width >= 64rem) {
+    .lg\:h-170 {
       height: calc(var(--spacing) * 170);
     }
-  }
-  .lg\:h-full {
-    @media (width >= 64rem) {
+    .lg\:h-full {
       height: 100%;
     }
-  }
-  .lg\:w-1\/2 {
-    @media (width >= 64rem) {
+    .lg\:w-1\/2 {
       width: calc(1 / 2 * 100%);
     }
-  }
-  .lg\:w-7 {
-    @media (width >= 64rem) {
+    .lg\:w-7 {
       width: calc(var(--spacing) * 7);
     }
-  }
-  .lg\:w-35 {
-    @media (width >= 64rem) {
+    .lg\:w-35 {
       width: calc(var(--spacing) * 35);
     }
-  }
-  .lg\:w-90 {
-    @media (width >= 64rem) {
+    .lg\:w-90 {
       width: calc(var(--spacing) * 90);
     }
-  }
-  .lg\:w-100 {
-    @media (width >= 64rem) {
+    .lg\:w-100 {
       width: calc(var(--spacing) * 100);
     }
-  }
-  .lg\:w-150 {
-    @media (width >= 64rem) {
+    .lg\:w-150 {
       width: calc(var(--spacing) * 150);
     }
-  }
-  .lg\:w-full {
-    @media (width >= 64rem) {
+    .lg\:w-full {
       width: 100%;
     }
-  }
-  .lg\:max-w-lg {
-    @media (width >= 64rem) {
-      max-width: var(--container-lg);
-    }
-  }
-  .lg\:flex-row {
-    @media (width >= 64rem) {
+    .lg\:flex-row {
       flex-direction: row;
     }
-  }
-  .lg\:gap-20 {
-    @media (width >= 64rem) {
+    .lg\:gap-20 {
       gap: calc(var(--spacing) * 20);
     }
-  }
-  .lg\:space-y-0 {
-    @media (width >= 64rem) {
-      :where(& > :not(:last-child)) {
-        --tw-space-y-reverse: 0;
-        margin-block-start: 0;
-        margin-block-end: 0;
-      }
+    :where(.lg\:space-y-0 > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: 0;
+      margin-block-end: 0;
     }
-  }
-  .lg\:gap-x-2 {
-    @media (width >= 64rem) {
+    .lg\:gap-x-2 {
       column-gap: calc(var(--spacing) * 2);
     }
-  }
-  .lg\:gap-x-10 {
-    @media (width >= 64rem) {
+    .lg\:gap-x-10 {
       column-gap: calc(var(--spacing) * 10);
     }
-  }
-  .lg\:gap-y-0 {
-    @media (width >= 64rem) {
-      row-gap: 0;
+    .lg\:gap-y-0 {
+      row-gap: 0px;
     }
-  }
-  .lg\:object-cover {
-    @media (width >= 64rem) {
+    .lg\:object-cover {
       object-fit: cover;
     }
-  }
-  .lg\:p-0 {
-    @media (width >= 64rem) {
-      padding: 0;
+    .lg\:p-0 {
+      padding: 0px;
     }
-  }
-  .lg\:px-0 {
-    @media (width >= 64rem) {
-      padding-inline: 0;
+    .lg\:px-0 {
+      padding-inline: 0px;
     }
-  }
-  .lg\:px-5 {
-    @media (width >= 64rem) {
+    .lg\:px-5 {
       padding-inline: calc(var(--spacing) * 5);
     }
-  }
-  .lg\:px-8 {
-    @media (width >= 64rem) {
-      padding-inline: calc(var(--spacing) * 8);
-    }
-  }
-  .lg\:px-10 {
-    @media (width >= 64rem) {
+    .lg\:px-10 {
       padding-inline: calc(var(--spacing) * 10);
     }
-  }
-  .lg\:py-3 {
-    @media (width >= 64rem) {
+    .lg\:py-3 {
       padding-block: calc(var(--spacing) * 3);
     }
-  }
-  .lg\:py-5 {
-    @media (width >= 64rem) {
+    .lg\:py-5 {
       padding-block: calc(var(--spacing) * 5);
     }
-  }
-  .lg\:py-30 {
-    @media (width >= 64rem) {
+    .lg\:py-30 {
       padding-block: calc(var(--spacing) * 30);
     }
-  }
-  .lg\:text-left {
-    @media (width >= 64rem) {
+    .lg\:text-left {
       text-align: left;
     }
-  }
-  .lg\:text-2xl {
-    @media (width >= 64rem) {
+    .lg\:text-2xl {
       font-size: var(--text-2xl);
       line-height: var(--tw-leading, var(--text-2xl--line-height));
     }
-  }
-  .lg\:text-3xl {
-    @media (width >= 64rem) {
+    .lg\:text-3xl {
       font-size: var(--text-3xl);
       line-height: var(--tw-leading, var(--text-3xl--line-height));
     }
-  }
-  .lg\:text-5xl {
-    @media (width >= 64rem) {
+    .lg\:text-5xl {
       font-size: var(--text-5xl);
       line-height: var(--tw-leading, var(--text-5xl--line-height));
     }
-  }
-  .lg\:text-6xl {
-    @media (width >= 64rem) {
+    .lg\:text-6xl {
       font-size: var(--text-6xl);
       line-height: var(--tw-leading, var(--text-6xl--line-height));
     }
-  }
-  .lg\:\[clip-path\:ellipse\(120\%_100\%_at_50\%_0\%\)\] {
-    @media (width >= 64rem) {
+    .lg\:\[clip-path\:ellipse\(120\%_100\%_at_50\%_0\%\)\] {
       clip-path: ellipse(120% 100% at 50% 0%);
     }
   }
@@ -2906,8 +2645,6 @@
     --depth: 1;
     --noise: 0;
   }
-}
-@layer base {
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
       color-scheme: dark;
@@ -2941,8 +2678,6 @@
       --noise: 0;
     }
   }
-}
-@layer base {
   :root:has(input.theme-controller[value=light]:checked),[data-theme=light] {
     color-scheme: light;
     --color-base-100: oklch(100% 0 0);
@@ -2974,8 +2709,6 @@
     --depth: 1;
     --noise: 0;
   }
-}
-@layer base {
   :root:has(input.theme-controller[value=dark]:checked),[data-theme=dark] {
     color-scheme: dark;
     --color-base-100: oklch(25.33% 0.016 252.42);
@@ -3007,8 +2740,6 @@
     --depth: 1;
     --noise: 0;
   }
-}
-@layer base {
   @property --radialprogress {
     syntax: "<percentage>";
     inherits: true;
@@ -3019,30 +2750,18 @@
     inherits: false;
     initial-value: 0deg;
   }
-}
-@layer base {
   :root {
     scrollbar-color: currentColor #0000;
     @supports (color: color-mix(in lab, red, red)) {
       scrollbar-color: color-mix(in oklch, currentColor 35%, #0000) #0000;
     }
-  }
-}
-@layer base {
-  :root {
     --fx-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.34' numOctaves='4' stitchTiles='stitch'%3E%3C/feTurbulence%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23a)' opacity='0.2'%3E%3C/rect%3E%3C/svg%3E");
-  }
-}
-@layer base {
-  :root {
     --page-scroll-lock: initial;
     --page-overflow: var(--page-scroll-lock) hidden;
   }
   :root:not(span) {
     overflow: var(--page-overflow);
   }
-}
-@layer base {
   :root {
     --page-has-backdrop: var(--page-scroll-lock) 1;
     --page-scroll-bg: var(--page-scroll-lock)
@@ -3063,8 +2782,6 @@
       --page-has-scroll:  ;
     }
   }
-}
-@layer base {
   :root, [data-theme] {
     background-color: var(--root-bg);
     color: var(--color-base-content);
